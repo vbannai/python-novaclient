@@ -59,7 +59,7 @@ class FlavorManager(base.ManagerWithFind):
         self._delete("/flavors/%s" % base.getid(flavor))
 
     def create(self, name, ram, vcpus, disk, flavorid,
-               ephemeral=0, swap=0, rxtx_factor=1):
+               ephemeral=0, disk_qos=0, swap=0, rxtx_factor=1):
         """
         Create (allocate) a  floating ip for a tenant
 
@@ -81,6 +81,7 @@ class FlavorManager(base.ManagerWithFind):
                 "disk": int(disk),
                 "id": int(flavorid),
                 "swap": int(swap),
+                "disk_qos": int(disk_qos),
                 "OS-FLV-EXT-DATA:ephemeral": int(ephemeral),
                 "rxtx_factor": int(rxtx_factor),
             }
